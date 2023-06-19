@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import render_template
+from flask import request
 
 app = Flask(__name__)
 
@@ -9,8 +10,10 @@ def home():
 
 
 @app.route("/login", methods=["post"])
-def login():
-   return render_template("login.html")
+def receive_data():
+   name = request.form["username"]
+   password = request.form["password"]
+   return f"<h1> name : {name}, password: {password}</h1>"
 
 
 
