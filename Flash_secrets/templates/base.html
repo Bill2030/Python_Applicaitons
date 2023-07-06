@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block styles %}
+    {{bootstrap.load_css()}}
+     {% endblock %}
+
+    <meta charset="UTF-8">
+    <title>{% block title%}{% endblock %}</title>
+    <style>
+        {% block styling %}
+        body{
+        background:purple;
+        justify-content:center;
+        display: flex;
+        align-items:center;
+        text-align:center;
+        color:white;
+        height: 100vh;
+
+        }
+        {% endblock %}
+    </style>
+    <style>
+        {% block style%}
+       .content {
+        width: 50%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        justify-content:center;
+        align-items:center;
+
+        }
+        {% endblock %}
+    </style>
+</head>
+<body>
+{% block content%}{% endblock %}
+  {% block scripts %}
+
+            {{ bootstrap.load_js() }}
+        {% endblock %}
+</body>
+
+</html>
