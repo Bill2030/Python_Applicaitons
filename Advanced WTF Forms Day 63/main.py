@@ -31,16 +31,15 @@ def home():
 
 
 @app.route('/add')
-def add_cafe():
+def add():
     form = CafeForm()
     if form.validate_on_submit():
-        with open('cafe-data.csv', "w") as file:
-            file.read()
-
-    # Exercise:
-    # Make the form write a new row into cafe-data.csv
-    # with   if form.validate_on_submit()
-        return render_template('add.html', form=form)
+        with open('cafe-data.csv', newline='', encoding="utf8") as csv_file:
+            csv_data = csv.reader(csv_file, delimiter=',')
+            list_of_rows = []
+            for row in csv_data:
+                list_of_rows.append(row)
+        return render_template('cafes.html', cafes=list_of_rows)
 
 
 @app.route('/cafes')
